@@ -1,6 +1,6 @@
 # NodeJs Redmine Feedback
 
-A module to integrate [Redmine](http://redmine.org) as feedback platform in your NodeJs project.
+A module to integrate [Redmine](http://www.redmine.org) as feedback platform in your NodeJs project.
 
 ## Motivation
 
@@ -48,7 +48,7 @@ let app = express();
 app.use(bodyParser.json());
 
 //require the module
-app.post('/feedback', redmine-feedback .handlePOST);
+app.post('/feedback', redmine-feedback.handlePOST);
 
 //add your stuff here
 
