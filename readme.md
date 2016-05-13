@@ -1,24 +1,42 @@
 # NodeJs Redmine Feedback
 
-A module to integrate redmine as feedback platform in your nodejs project.
+A module to integrate [Redmine](http://redmine.org) as feedback platform in your NodeJs project.
 
 ## Motivation
 
 We develop new products and need fast feedback from our users. We already had a Redmine instance running and thought that
-we should store the feedback within redmine, too.
+we should store the feedback within Redmine, too.
 
 ## Description
 
 This little module provides a POST route to integrate the great project management tool Redmine in your NodeJs project as
 feedback platform. The route will send a request to your Redmine instance and create a new feedback ticket with the
-parameter you provide. All configuration will be done through environment variables.
+parameter you provide.
 
 The module should be working with any NodeJs project that is based on the http module pattern (req, res, next).
 Currently only ExpressJs is tested.
 
+## Environment variables
+
+At the moment we use only environment variables for any configurations. The list of all variables:
+
+* **REDMINEURL** - the url to the redmine instance - mandatory
+* **REDMINEAUTHTOKEN** - the access-token for the redmine instance - mandatory [Redmine Auth](http://www.redmine.org/projects/redmine/wiki/Rest_api#Authentication)
+
+* **REDMINETICKETPROJECTID** - project id of the tickets - mandatory
+* **REDMINETICKETTRACKERID** - tracker id of the tickets - mandatory
+* **REDMINETICKETSUBJECT** - subject of the tickets - mandatory
+* **REDMINETICKETPRIORITYID** - priority of the tickets - mandatory
+
+
+## POST parameters
+
+* **message** - the content of the ticket
+
 ## Usage
 
-```
+```javascript
+
 const express = require('express'),
       request = require('supertest'),
       bodyParser = require('body-parser'),
@@ -44,9 +62,16 @@ const server = app.listen(app.get('port'), function () {
 
 ```
 
+Now you can send a post request to http://localhost:3500/feedback to create a feedback ticket in your redmine instance.
+
 ## Tests
 
 ``` npm tests ```
+
+## Contributors
+
+* Nicolas Traeder
+* Haithem Bel Haj
 
 ## License
 
