@@ -3,6 +3,7 @@
 A module to integrate redmine as feedback platform in your nodejs project.
 
 ## Motivation
+
 We develop new products and need fast feedback from our users. We already had a Redmine instance running and thought that
 we should store the feedback within redmine, too.
 
@@ -14,6 +15,34 @@ parameter you provide. All configuration will be done through environment variab
 
 The module should be working with any NodeJs project that is based on the http module pattern (req, res, next).
 Currently only ExpressJs is tested.
+
+## Usage
+
+```
+const express = require('express'),
+      request = require('supertest'),
+      bodyParser = require('body-parser'),
+      redmine-feedback = require('redmine-feedback');
+
+let app = express();
+
+//body-parser
+app.use(bodyParser.json());
+
+//require the module
+app.post('/feedback', redmine-feedback .handlePOST);
+
+//add your stuff here
+
+app.set('port', process.env.PORT || 3500);
+
+//start the server
+const server = app.listen(app.get('port'), function () {
+  debug('redmine-feedback running on ' + server.address().port);
+});
+
+
+```
 
 ## Tests
 
